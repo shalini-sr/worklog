@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Employee Login - WorkLog Pro</title>
+
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet" />
+
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      overflow: hidden;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      color: white;
+    }
+
+    .bg-slideshow {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      z-index: -1;
+      transition: opacity 1.5s ease-in-out;
+      filter: brightness(0.4);
+      background-color: black;
+    }
+
+    .navbar {
+      background-color: rgba(0, 0, 0, 0.8);
+      animation: slideInTop 1s ease-in-out;
+    }
+
+    .main-content {
+      padding-top: 80px; /* Push below navbar */
+      height: calc(100% - 56px);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 2rem;
+      animation: fadeIn 1.2s ease-in-out;
+      overflow-y: auto;
+    }
+
+    .card-glass {
+      background: rgba(255, 255, 255, 0.1);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      border-radius: 20px;
+      backdrop-filter: blur(12px);
+      padding: 2.5rem;
+      box-shadow: 0 0 30px rgba(0, 0, 0, 0.3);
+      animation: zoomIn 1.4s ease;
+      width: 100%;
+      max-width: 500px;
+    }
+
+    .btn-primary, .btn-outline-light {
+      border-radius: 50px;
+      padding: 0.6rem 1.5rem;
+      font-weight: 500;
+      font-size: 1.1rem;
+      transition: transform 0.3s ease;
+    }
+
+    .btn-primary:hover,
+    .btn-outline-light:hover {
+      transform: scale(1.05);
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes slideInTop {
+      from { transform: translateY(-100%); opacity: 0; }
+      to { transform: translateY(0); opacity: 1; }
+    }
+
+    @keyframes zoomIn {
+      from { transform: scale(0.95); opacity: 0; }
+      to { transform: scale(1); opacity: 1; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Background Slideshow -->
+  <div id="bg-slideshow" class="bg-slideshow"></div>
+
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="#">Daliy work log</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+        <ul class="navbar-nav">
+          <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+          <li class="nav-item"><a class="nav-link" href="register.html">Register</a></li>
+          <li class="nav-item"><a class="nav-link active" href="login.html">Login</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Main Content -->
+  <div class="main-content">
+    <div class="card-glass text-white">
+      <h2 class="mb-4">Employee Login</h2>
+      <form>
+        <div class="mb-3 text-start">
+          <label class="form-label">Email or Username</label>
+          <input type="text" class="form-control" placeholder="Enter your email or username" required>
+        </div>
+
+        <div class="mb-3 text-start">
+          <label class="form-label">Password</label>
+          <input type="password" class="form-control" placeholder="Enter password" required>
+        </div>
+
+        <div class="form-check text-start mb-3">
+          <input class="form-check-input" type="checkbox" id="rememberMe">
+          <label class="form-check-label" for="rememberMe">Remember Me</label>
+        </div>
+
+        <div class="d-grid gap-2">
+          <a href="details.html" class="btn btn-primary">Login</a>
+          <a href="index.html" class="btn btn-outline-light">Back to Home</a>
+        </div>
+
+        <p class="mt-3">Don't have an account? <a href="register.html" class="text-info">Register here</a></p>
+      </form>
+    </div>
+  </div>
+
+  <!-- Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+  <!-- Background Slideshow Script -->
+  <script>
+    const slideshow = document.getElementById('bg-slideshow');
+    const images = [
+      'homeimg.jpg',
+      'homeimg1.jpg',
+      'homeimg2.jpg',
+      'homeimg3.jpg'
+    ];
+    let current = 0;
+    function changeBackground() {
+      slideshow.style.opacity = 0;
+      setTimeout(() => {
+        current = (current + 1) % images.length;
+        slideshow.style.backgroundImage = `url(${images[current]})`;
+        slideshow.style.opacity = 1;
+      }, 100);
+    }
+    slideshow.style.backgroundImage = `url(${images[current]})`;
+    setInterval(changeBackground, 4000);
+  </script>
+</body>
+</html>
